@@ -20,8 +20,12 @@ class Inventory:
         This method will lock the item so nobody else can manipulate
         the inventory until it's returned. This prevents selling the
         same item to two different customers '''
-        item_type.locked = True
-        pass
+        if(item_type in self.items.keys() and self.items.get(item_type > 0)):
+            return True
+        else:
+            return False:
+        #item_type.locked = True
+        #pass
     
     def unlock(self, item_type):
         '''Release the given type so that other customers can access it.'''
@@ -47,9 +51,10 @@ class Inventory:
         
         
 class Item:
-    def __init__(self, name):
+    def __init__(self, name, quantity):
         self.name = name
         self.locked = False
+        self.quantity = quantity
 
 
 inv1 = Inventory()
@@ -58,6 +63,7 @@ inv1.add_item("samsung", 0)
 
 item_type = 'iphone'
 
+inv1.lock(item_type)
 
 try:
     num_left = inv1.purchase(item_type)
