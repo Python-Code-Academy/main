@@ -3,7 +3,6 @@ class InvalidItemType(Exception):
     def __init__(self, message = "Invalid item type."):
         self.message = message 
   
-    
     def __str__(self):
         if (self.message):
             return self.message
